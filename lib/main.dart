@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:various_providers/screens/changenotifierprovider_screen.dart';
 
+import './providers/changenotifierprovider_model.dart';
 import './screens/provider_screen.dart';
 import './providers/provider_model.dart';
 
@@ -15,7 +17,10 @@ class MyApp extends StatelessWidget {
       providers: [
         Provider<ProviderModel>(
           create: (_) => ProviderModel(),
-        )
+        ),
+        ChangeNotifierProvider(
+          create: (_) => ChangeNotifierModel(),
+        ),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -45,6 +50,19 @@ class MyHomePage extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) {
                       return ProviderScreen();
+                    },
+                  ),
+                );
+              },
+            ),
+            RaisedButton(
+              child: Text('ChangeNotifierProvider'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return ChangeNotifierScreen();
                     },
                   ),
                 );
