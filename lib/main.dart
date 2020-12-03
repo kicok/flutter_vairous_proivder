@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:various_providers/screens/changenotifierprovider_screen.dart';
 
+import './providers/changenotifier_proxyprovider_model.dart';
+import './screens/changenotifier_proxyprovider_screen.dart';
+import './screens/changenotifierprovider_screen.dart';
 import './providers/changenotifierprovider_model.dart';
 import './screens/provider_screen.dart';
 import './providers/provider_model.dart';
@@ -21,6 +23,13 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => ChangeNotifierModel(),
         ),
+        ChangeNotifierProxyProvider<ProviderModel, ChangeNotifierProxyModel>(
+          create: (_) => ChangeNotifierProxyModel(),
+          update: (context, provModel, cnpModel) {
+            cnpModel.provModel = provModel;
+            return cnpModel;
+          },
+        )
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -63,6 +72,19 @@ class MyHomePage extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) {
                       return ChangeNotifierScreen();
+                    },
+                  ),
+                );
+              },
+            ),
+            RaisedButton(
+              child: Text('ChangeNotifierProxyProvider'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return ChangeNotifierProxyScreen();
                     },
                   ),
                 );
