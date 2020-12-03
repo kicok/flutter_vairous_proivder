@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import './screens/valuenotifier_screen.dart';
 import './providers/changenotifier_proxyprovider_model.dart';
 import './screens/changenotifier_proxyprovider_screen.dart';
 import './screens/changenotifierprovider_screen.dart';
@@ -29,6 +30,9 @@ class MyApp extends StatelessWidget {
             cnpModel.provModel = provModel;
             return cnpModel;
           },
+        ),
+        ChangeNotifierProvider<ValueNotifier<int>>(
+          create: (_) => ValueNotifier<int>(0),
         )
       ],
       child: MaterialApp(
@@ -85,6 +89,19 @@ class MyHomePage extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) {
                       return ChangeNotifierProxyScreen();
+                    },
+                  ),
+                );
+              },
+            ),
+            RaisedButton(
+              child: Text('ValueNotifier'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return ValueNotifierScreen();
                     },
                   ),
                 );
