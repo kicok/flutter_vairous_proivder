@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:various_providers/screens/futureprovider_screen.dart';
 
 import './screens/valuenotifier_screen.dart';
 import './providers/changenotifier_proxyprovider_model.dart';
@@ -33,7 +34,14 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider<ValueNotifier<int>>(
           create: (_) => ValueNotifier<int>(0),
-        )
+        ),
+        FutureProvider<Map<String, int>>(
+          initialData: {'value': 0},
+          create: (_) async {
+            await Future.delayed(Duration(seconds: 2));
+            return {'value': 15};
+          },
+        ),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -106,7 +114,20 @@ class MyHomePage extends StatelessWidget {
                   ),
                 );
               },
-            )
+            ),
+            RaisedButton(
+              child: Text('FutureProvider(FutureBuild)'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return FutureProviderScreen();
+                    },
+                  ),
+                );
+              },
+            ),
           ],
         ),
       ),
