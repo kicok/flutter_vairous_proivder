@@ -1,6 +1,6 @@
 Future<FutureProviderModel> futuerProviderFunc() async {
   await Future.delayed(Duration(seconds: 2));
-  return FutureProviderModel(counter: 0);
+  return FutureProviderModel(counter: 1);
 }
 
 class FutureProviderModel {

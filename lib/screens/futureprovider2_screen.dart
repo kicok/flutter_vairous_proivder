@@ -7,18 +7,27 @@ class FutureProviderScreen2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('FutuerProvider2'),
-        ),
-        body: Consumer<FutureProviderModel>(
-          builder: (context, futureProv, child) {
-            return Center(
-              child: Text(
-                'counter:${futureProv.counter}',
-                style: TextStyle(fontSize: 36),
-              ),
-            );
-          },
-        ));
+      appBar: AppBar(
+        title: Text('FutuerProvider2'),
+      ),
+      body: Consumer<FutureProviderModel>(
+        builder: (context, futureProv, child) {
+          return Center(
+            child: Text(
+              'counter:${futureProv.counter}',
+              style: TextStyle(fontSize: 36),
+            ),
+          );
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {
+          final fModel =
+              Provider.of<FutureProviderModel>(context, listen: false);
+          fModel.incrementcounter();
+        },
+      ),
+    );
   }
 }

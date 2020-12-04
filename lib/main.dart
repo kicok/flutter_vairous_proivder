@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:various_providers/screens/futureprovider_screen.dart';
+import 'package:various_providers/providers/futureprovider_model.dart';
 
+import './screens/futureprovider2_screen.dart';
+import './screens/futureprovider_screen.dart';
 import './screens/valuenotifier_screen.dart';
 import './providers/changenotifier_proxyprovider_model.dart';
 import './screens/changenotifier_proxyprovider_screen.dart';
@@ -41,6 +43,10 @@ class MyApp extends StatelessWidget {
             await Future.delayed(Duration(seconds: 2));
             return {'value': 15};
           },
+        ),
+        FutureProvider<FutureProviderModel>(
+          initialData: FutureProviderModel(counter: 0),
+          create: (_) => futuerProviderFunc(),
         ),
       ],
       child: MaterialApp(
@@ -123,6 +129,19 @@ class MyHomePage extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) {
                       return FutureProviderScreen();
+                    },
+                  ),
+                );
+              },
+            ),
+            RaisedButton(
+              child: Text('FutureProvider2'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return FutureProviderScreen2();
                     },
                   ),
                 );
