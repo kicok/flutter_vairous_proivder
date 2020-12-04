@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:various_providers/providers/streamprovider_model.dart';
 
+import './providers/streamprovider_model.dart';
+import './providers/valuelistenableprovider_model.dart';
+import './screens/valuelistenableprovider_screen.dart';
 import './providers/futureprovider_model.dart';
 import './screens/streamprovider_screen.dart';
 import './screens/futureprovider2_screen.dart';
@@ -31,6 +33,11 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider<ValueNotifier<int>>(
           create: (_) => ValueNotifier<int>(0),
+        ),
+
+        // ValueListenableProvider<T> 의 T가 곧 value 이므로 T를 double로 지정한다.
+        ValueListenableProvider<double>(
+          create: (_) => ValueListenableProviderModel(0.0),
         ),
         FutureProvider<Map<String, int>>(
           initialData: {'value': 0},
@@ -167,6 +174,19 @@ class MyHomePage extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) {
                       return StreamProviderScreen();
+                    },
+                  ),
+                );
+              },
+            ),
+            RaisedButton(
+              child: Text('ValueListenableProvider'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return ValueListenableProviderScreen();
                     },
                   ),
                 );
