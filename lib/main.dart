@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:various_providers/providers/futureprovider_model.dart';
+import 'package:various_providers/providers/streamprovider_model.dart';
 
+import './providers/futureprovider_model.dart';
+import './screens/streamprovider_screen.dart';
 import './screens/futureprovider2_screen.dart';
 import './screens/futureprovider_screen.dart';
 import './screens/valuenotifier_screen.dart';
@@ -48,6 +50,9 @@ class MyApp extends StatelessWidget {
           initialData: FutureProviderModel(counter: 0),
           create: (_) => futuerProviderFunc(),
         ),
+        StreamProvider<StreamProviderModel>(
+            initialData: StreamProviderModel(counter: 0),
+            create: (_) => streamProviderFunc()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -142,6 +147,19 @@ class MyHomePage extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) {
                       return FutureProviderScreen2();
+                    },
+                  ),
+                );
+              },
+            ),
+            RaisedButton(
+              child: Text('StreamProvider'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return StreamProviderScreen();
                     },
                   ),
                 );
