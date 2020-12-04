@@ -29,13 +29,6 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => ChangeNotifierModel(),
         ),
-        ChangeNotifierProxyProvider<ProviderModel, ChangeNotifierProxyModel>(
-          create: (_) => ChangeNotifierProxyModel(),
-          update: (context, provModel, cnpModel) {
-            cnpModel.provModel = provModel;
-            return cnpModel;
-          },
-        ),
         ChangeNotifierProvider<ValueNotifier<int>>(
           create: (_) => ValueNotifier<int>(0),
         ),
@@ -51,8 +44,22 @@ class MyApp extends StatelessWidget {
           create: (_) => futuerProviderFunc(),
         ),
         StreamProvider<StreamProviderModel>(
-            initialData: StreamProviderModel(counter: 0),
-            create: (_) => streamProviderFunc()),
+          initialData: StreamProviderModel(counter: 0),
+          create: (_) => streamProviderFunc(),
+        ),
+
+        //FutureProvider와 StreamProvider가 끝난뒤에 실행되어야 하므로코드위치를 아래로 옮긴다
+        //FutureProvider와 StreamProvider의 initialData가 정의되어있지 않으면 error발생.
+        ChangeNotifierProxyProvider3<ProviderModel, FutureProviderModel,
+            StreamProviderModel, ChangeNotifierProxyModel>(
+          create: (_) => ChangeNotifierProxyModel(),
+          update: (context, provModel, fModel, sModel, cnpModel) {
+            cnpModel.provModel = provModel;
+            cnpModel.fModel = fModel;
+            cnpModel.sModel = sModel;
+            return cnpModel;
+          },
+        ),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
