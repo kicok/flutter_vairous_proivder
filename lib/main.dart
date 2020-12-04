@@ -85,114 +85,117 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            RaisedButton(
-              child: Text('Provider'),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return ProviderScreen();
-                    },
-                  ),
-                );
-              },
-            ),
-            RaisedButton(
-              child: Text('ChangeNotifierProvider'),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return ChangeNotifierScreen();
-                    },
-                  ),
-                );
-              },
-            ),
-            RaisedButton(
-              child: Text('ChangeNotifierProxyProvider'),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return ChangeNotifierProxyScreen();
-                    },
-                  ),
-                );
-              },
-            ),
-            RaisedButton(
-              child: Text('ValueNotifier'),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return ValueNotifierScreen();
-                    },
-                  ),
-                );
-              },
-            ),
-            RaisedButton(
-              child: Text('FutureProvider(FutureBuild)'),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return FutureProviderScreen();
-                    },
-                  ),
-                );
-              },
-            ),
-            RaisedButton(
-              child: Text('FutureProvider2'),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return FutureProviderScreen2();
-                    },
-                  ),
-                );
-              },
-            ),
-            RaisedButton(
-              child: Text('StreamProvider'),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return StreamProviderScreen();
-                    },
-                  ),
-                );
-              },
-            ),
-            RaisedButton(
-              child: Text('ValueListenableProvider'),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return ValueListenableProviderScreen();
-                    },
-                  ),
-                );
-              },
-            ),
-          ],
+        child: IntrinsicWidth(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              RaisedButton(
+                child: Text('Provider'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return ProviderScreen();
+                      },
+                    ),
+                  );
+                },
+              ),
+              RaisedButton(
+                child: Text('ChangeNotifierProvider'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return ChangeNotifierScreen();
+                      },
+                    ),
+                  );
+                },
+              ),
+              RaisedButton(
+                child: Text('ChangeNotifierProxyProvider'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return ChangeNotifierProxyScreen();
+                      },
+                    ),
+                  );
+                },
+              ),
+              RaisedButton(
+                child: Text('ValueNotifier'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return ValueNotifierScreen();
+                      },
+                    ),
+                  );
+                },
+              ),
+              RaisedButton(
+                child: Text('FutureProvider(FutureBuild)'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return FutureProviderScreen();
+                      },
+                    ),
+                  );
+                },
+              ),
+              RaisedButton(
+                child: Text('FutureProvider2'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return FutureProviderScreen2();
+                      },
+                    ),
+                  );
+                },
+              ),
+              RaisedButton(
+                child: Text('StreamProvider'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return StreamProviderScreen();
+                      },
+                    ),
+                  );
+                },
+              ),
+              RaisedButton(
+                child: Text('ValueListenableProvider'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return ValueListenableProviderScreen();
+                      },
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
